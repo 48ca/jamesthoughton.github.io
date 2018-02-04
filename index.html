@@ -4,154 +4,195 @@
         <title>
             jhoughton.me
         </title>
-        <meta name="viewport" content="width=device-width, initial-scale=.7">
-        <meta charset="UTF-8">
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script>
-            document.onready = function() {
-                var r = 7.0;
-                var svg = document.querySelector("svg");
-                var $svg = $(svg);
-                var e1 = svg.querySelector(".eye.o");
-                var e2 = svg.querySelector(".eye.t");
-                var e1cx = e1.getAttribute('cx');
-                var e2cx = e2.getAttribute('cx');
-                var e1cy = e1.getAttribute('cy');
-                var e2cy = e2.getAttribute('cy');
-                var to;
-                document.onmousemove = function(e) {
-                    if(to !== undefined) {
-                        clearTimeout(to);
-                    }
-                    var o = $svg.offset();
-                    var offx1 = e.pageX - e1cx - o.left;
-                    var offx2 = e.pageX - e2cx - o.left;
-                    var offy1 = e.pageY - e1cy - o.top;
-                    var offy2 = e.pageY - e2cy - o.top;
-                    var mag1 = Math.sqrt(offx1*offx1 + offy1*offy1);
-                    var mag2 = Math.sqrt(offx2*offx2 + offy2*offy2);
-                    if(mag1 < r) mag1 = r;
-                    if(mag2 < r) mag2 = r;
-                    e1.setAttribute('cx', r*offx1/mag1 - -e1cx);
-                    e1.setAttribute('cy', r*offy1/mag1 - -e1cy);
-                    e2.setAttribute('cx', r*offx2/mag2 - -e2cx);
-                    e2.setAttribute('cy', r*offy2/mag2 - -e2cy);
-                };
-                document.onmouseout = function(){
-                    to = setTimeout(function(){
-                        e1.setAttribute('cx',e1cx);
-                        e1.setAttribute('cy',e1cy);
-                        e2.setAttribute('cx',e2cx);
-                        e2.setAttribute('cy',e2cy);
-                    },500);
-                };
-            };
-        </script>
-        <link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-        <style>
-            @font-face {
-                font-family: Fajardo;
-                src: url("JamesFajardo.ttf");
-            }
-            html,body {
-                background-color: #222;
-                min-width: 500px;
-            }
-            a {
-                font-family: 'Karla', sans-serif;
-                color: #777;
-                text-decoration: none;
-                font-size: 20px;
-                transition: color 100ms;
-            }
-            a:hover {
-                color: #ccc;
-            }
-            .links {
-                width: 100%;
-                text-align: center;
-            }
-            .links a {
-                display: block;
-                margin-bottom: 10px;
-                margin-left: auto;
-                margin-right: auto;
-                width: 200px;
-            }
-            svg {
-                display: block;
-                margin: 0 auto;
-                stroke-width: 4px;
-                fill: #eee; 
-                stroke: #777;
-                shape-rendering: geometricPrecision;
-            }
-            circle.eye {
-                fill: #777;
-                -webkit-transition: all 90ms;
-                -moz-transition: all 90ms;
-                -ms-transition: all 90ms;
-                -o-transition: all 90ms;
-                transition: all 90ms;
-            }
-            .end {
-                stroke-width: 1px;
-                stroke: #777;
-                fill: #777;
-            }
-            h2 {
-                font-family: Fajardo,sans-serif;
-                width: 100%;
-                margin-top: 10px;
-                margin-left: 0;
-                margin-right: 0;
-                text-align: center;
-                color: #ddd;
-                font-size: 60px;
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css" integrity="sha384-B41nY7vEWuDrE9Mr+J2nBL0Liu+nl/rBXTdpQal730oTHdlrlXHzYMOhDU60cwde" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="styles.css">
+        <script src="main.js"></script>
     </head>
     <body>
-        <svg height="250" width="500">
-            <defs>
-                <clipPath id="cut-off">
-                    <rect x="140" y="50" width="220" height="101" />
-                </clipPath>
-                <clipPath id="fingers">
-                    <rect x="0" y="151" width="500" height="50" />
-                </clipPath>
-                <clipPath id="nose">
-                    <rect x="0" y = "148.6" width="500" height="200" />
-                </clipPath>
-            </defs>
-            <circle cx="250" cy="180" r="110" clip-path="url(#cut-off)" class="semi" />
-
-            <circle cx="30" cy="154" r="12" clip-path="url(#fingers)" />
-            <circle cx="54" cy="154" r="12" clip-path="url(#fingers)" />
-            <circle cx="78" cy="154" r="12" clip-path="url(#fingers)" />
-            <circle cx="422" cy="154" r="12" clip-path="url(#fingers)" />
-            <circle cx="446" cy="154" r="12" clip-path="url(#fingers)" />
-            <circle cx="470" cy="154" r="12" clip-path="url(#fingers)" />
-
-            <polyline points="3,150 225,150" class="line" />
-            <circle cx="3" cy="150" r="1.5" class="end" />
-            <polyline points="276,150 497,150" class="line" />
-            <circle cx="497" cy="150" r="1.5" class="end" />
-            <path d="M223,148 223,148 C190,280 310,280 278,148" clip-path="url(#nose)" />
-            <circle cx="220" cy="118" r="4" class="eye o" />
-            <circle cx="280" cy="118" r="4" class="eye t" />
-        </svg>
-        <h2>
-            James was here
-        </h2>
-        <p class="bio">
-        </p>
-        <div class="links">
-            <a href="https://github.com/jamesthoughton">github</a>
-			<a href="/uva">uva</a>
-            <a href="/shoegaze">shoegaze</a>
-            <a href="/question">on life's hardest questions</a>
-            <a href="/stylish">stylish</a>
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="heading">
+                            <h1 class="title">
+                                I'm James Houghton
+                            </h1>
+                            <span class="subheading">
+                                Full-Stack Web Application Developer, System Administrator, and C++ Fanatic
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wide">Projects</h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Notes on Differential Equations</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.io/jamesthoughton/uva">Coursework</a>
+                    </div>
+                </div>
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Wave Function Evolution</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/cs">Coursework</a>
+                    </div>
+                </div>
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="https://tjhsst.edu">ttyvideo</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/cs">Coursework</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wide">
+                    Education
+                </h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="https://virginia.edu">University of Virginia</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                I'm pursuing a B.S. in Computer Science for UVA, planning to graduate in 2020. Check out my coursework below.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.io/jamesthoughton/uva">Coursework</a>
+                    </div>
+                </div>
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="https://tjhsst.edu">TJHSST</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                TJHSST allowed me to start to deeply understand Computer Science and Mathematics to a high degree.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/cs">Coursework</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wide">
+                    Interests
+                </h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Performant Code</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                I am interested in developing code that takes full advantage of CPU cache, instruction-level parallelism with SIMD instructions, and CPU-level parallelism with threads.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Theorium Reactors</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                I have long been interested in the ways in which Thorium may be converted into energy. Liquid-fluoride thorium reactors (LFTRs) show immense promise, especially with impressive design drafts like LFTR49.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://articles.thmsr.nl/the-flibe-energy-lftr49-the-triple-ace-in-nuclear-gen-iv-design-ea9bffcd71dd">LFTR49</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wide">
+                    Links
+                </h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Stuff</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.io/jamesthoughton/uva">Coursework</a>
+                    </div>
+                </div>
+                <div class="content col-xl-6 col-md-12">
+                    <h3><a href="#">Stuff</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/cs">Coursework</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row footer">
+                <div class="col-md-4"> <!-- Left side of footer -->
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4"> <!-- Right side of footer -->
+                    <p class="center">
+                    Questions? Email me at <a href="mailto:jhoughton@virginia.edu">jhoughton@virginia.edu</a>.
+                    </p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
