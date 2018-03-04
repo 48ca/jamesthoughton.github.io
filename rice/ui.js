@@ -8,7 +8,7 @@ var ui = {
         ui.options.defaults = {
             name: "Window",
             position: ui.options.position.default,
-            background: ui.options.background.color(255, 255, 255, 255),
+            background: ui.options.background.color(255, 255, 255, 1),
             titlebar: true,
             height: 360,
             type: "text",
@@ -26,7 +26,7 @@ var ui = {
                 name: "Untitled",
                 type: "terminal",
                 position: ui.options.position.default,
-                background: ui.options.background.color(255, 255, 255, 255)
+                background: ui.options.background.color(255, 255, 255, 1)
             }
         );
         /*
@@ -45,7 +45,7 @@ var ui = {
                 type: "text",
                 width: 200,
                 height: 100,
-                background: ui.options.background.color(255, 0, 0)
+                background: ui.options.background.color(255, 0, 0, .2)
             }
         );
     },
@@ -80,6 +80,7 @@ var ui = {
 
         // background
         win.style[ops.background.property] = ops.background.data;
+        console.log(ops.background.data);
 
         // body
         var body = document.createElement("div");
@@ -95,12 +96,13 @@ var ui = {
                 browser.createInstance(body);
                 break;
             case "terminal":
-                var t = new Terminal(body);
+                var t = new Terminal(body, win);
                 break;
             case "text":
                 body.innerHTML = "testtext";
                 break;
         }
+        win.setAttribute('tabindex', 0);
         win.appendChild(body);
 
         // append to screen
@@ -110,12 +112,12 @@ var ui = {
     options: {
         position: {
             default: function() { return { left: 40, top: 20}; },
-            centerOnLoad: function(w, h) { return { left: (window.w + w) / 2 + "px", top: (window.h + h) / 2 + "px" }; },
+            centerOnLoad: function(w, h) { return { left: (window.innerWidth - w) / 2 + "px", top: (window.innerHeight - h) / 2 + "px" }; },
             center: function(w, h) { return { left: "calc(50% - " + w/2 + "px)", top: "calc(50% - " + h/2 + "px)" }; }
         },
         defaults: {}, // to be created
         background: {
-            color: function(r, g, b, a = 255) {
+            color: function(r, g, b, a = 1) {
                 return { property: "backgroundColor", data: "rgba(" + r + "," + g + "," + b + "," + a + ")"};
             },
             image: function(url) {
@@ -130,26 +132,32 @@ var ui = {
         var inityoffset = undefined;
         var initx = undefined;
         var inity = undefined;
+        var winRect = undefined;
         titlebar.addEventListener("mousedown", function(event) {
             mdown = true;
             initxoffset = event.screenX;
-			inityoffset = event.screenY;
-			var box = titlebar.getBoundingClientRect();
-			initx = box.x;
-			inity = box.y;
-			disableSelect(document.body);
-		});
+            inityoffset = event.screenY;
+            var box = titlebar.getBoundingClientRect();
+            initx = box.x;
+            inity = box.y;
+            disableSelect(document.body);
+            winRect = win.getBoundingClientRect();
+        });
         document.body.addEventListener("mousemove", function(event) {
             if(!mdown) return;
             event.stopPropagation();
             var l = initx + (event.screenX - initxoffset);
             var t = inity + (event.screenY - inityoffset);
-            if(l < 0)
+            if(l + winRect.width > window.innerWidth)
+                win.style.left = (window.innerWidth - winRect.width) + "px";
+            else if(l < 0)
                 win.style.left = "0";
             else
                 win.style.left = l + "px";
 
-            if(t < 0)
+            if(t + winRect.height > window.innerHeight)
+                win.style.top = (window.innerHeight - winRect.height) + "px";
+            else if(t < 0)
                 win.style.top = "0";
             else
                 win.style.top = t + "px";
@@ -157,8 +165,11 @@ var ui = {
         });
         document.body.addEventListener("mouseup", function(event) {
             mdown = false;
-			enableSelect(document.body);
+            enableSelect(document.body);
         });
+    },
+    removeElement(el) {
+        ui.screen.removeChild(el);
     },
     templates: {} // to be created
 };
@@ -166,14 +177,14 @@ var ui = {
 window.addEventListener('load', ui.onload, false);
 
 function disableSelect(el) {
-	el.addEventListener("mousedown",disabler,"false");
+    el.addEventListener("mousedown",disabler,"false");
 }
 
 function enableSelect(el){
-	el.removeEventListener("mousedown",disabler,"false");
+    el.removeEventListener("mousedown",disabler,"false");
 }
 
 function disabler(e){
-	if(e.preventDefault){ e.preventDefault(); }
-	return false;
+    if(e.preventDefault){ e.preventDefault(); }
+    return false;
 }
