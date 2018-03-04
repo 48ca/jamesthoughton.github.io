@@ -1,0 +1,53 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+.titlebar * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#templates {
+    display: none;
+}
+#screen {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.window {
+    position: absolute;
+}
+
+.titlebar {
+    height: 15px;
+    background-color: rgb(190, 190, 190);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.titlebar .title {
+    text-align: center;
+    font-size: 13px;
+    height: 100%;
+    width: 60%;
+    text-overflow: ellipsis;
+    color: rgb(0, 0, 0);
+    margin-left: 20%;
+}
+
+.window-terminal {
+    overflow-y: scroll;
+}
+
+.window-browser {
+    overflow-y: auto;
+    overflow-x: auto;
+}
