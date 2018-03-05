@@ -72,5 +72,9 @@ var commands = {
     'pwd': function(term, tokens) {
         term.printString(term.cdir.serialize() + "\n");
         return 0;
+    },
+    'exit': function(term, tokens) {
+        ui.removeElement(term.win);
+        return 0;
     }
 };
