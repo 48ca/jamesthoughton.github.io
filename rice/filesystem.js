@@ -22,8 +22,13 @@ class File {
         this.owner = owner;
         this.attributes = attributes;
         this.contents = "";
+        this.dir = undefined;
+    }
+    serialize() {
+        return this.dir.serialize() + "/" + this.name;
     }
 }
+File.DEFAULT_ATTRS = 644;
 
 class Directory {
     constructor(name, owner, attributes) {
@@ -69,6 +74,11 @@ class Directory {
             return null;
         }
     }
+    serialize() {
+        if(this == root) return "/";
+        else if(this.dir == root) return "/" + this.name;
+        else return this.dir.serialize() + "/" + this.name;
+    }
 }
 
 var root = new Directory("/", 0, 666);
@@ -83,6 +93,6 @@ root.files['..'] = root;
     root.addFile(dir);
 });
 
-root.files['home'].addFile(new Directory("james", 1000, 644));
-root.getDirectory(['home', 'james']).addFile(new File("test.txt", 1000, 644));
+root.files['home'].addFile(new Directory("james", users[1000], 644));
+root.getDirectory(['home', 'james']).addFile(new File("test.txt", users[1000], 644));
 root.getDirectory(['home', 'james']).files['test.txt'].contents = "test file\nnew line :)\n\ttab";

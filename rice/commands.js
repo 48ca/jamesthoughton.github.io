@@ -30,6 +30,26 @@ var commands = {
             term.printString("touch: no input files\n");
             return 1;
         }
+        var add = function(path) {
+            var dirs = path.split('/');
+            var fn = dirs[dirs.length - 1];
+            var dir = term.cdir.getDirectory(dirs.splice(0, dirs.length - 1));
+            if(!dir) {
+                term.printString("touch: could not open file " + path);
+                return 127;
+            }
+            if(fn in dir.files) {
+                term.printString("touch: warning: writing over '" + fn + "'\n");
+            }
+            var f = new File(fn, term.cuser, File.DEFAULT_ATTRS);
+            dir.addFile(f);
+            return 0;
+        }
+        for(var i = 1; i < tokens.length; i++) {
+            var ret = add(tokens[i]);
+            if(ret) return ret;
+        }
+        return 0;
     },
     'cd': function(term, tokens) {
         if(tokens.length == 1) {
@@ -47,6 +67,10 @@ var commands = {
             }
         }
         term.cdir = cdir;
+        return 0;
+    },
+    'pwd': function(term, tokens) {
+        term.printString(term.cdir.serialize() + "\n");
         return 0;
     }
 };

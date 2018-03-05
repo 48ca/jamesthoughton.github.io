@@ -23,7 +23,7 @@ var ui = {
         console.log("UI onload triggered");
         ui.addElement(
             {
-                name: "Untitled",
+                name: "Terminal",
                 type: "terminal",
                 position: ui.options.position.default,
                 background: ui.options.background.color(255, 255, 255, 1)

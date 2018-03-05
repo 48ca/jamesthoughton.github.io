@@ -5,6 +5,7 @@ class Terminal {
         this.el = body;
         this.win = win;
         this.cdir = root.getDirectory(['home', 'james']);
+        this.cuser = users[1000];
         this.command = ""; // current command string
         this.env = {
             PS1: "\\u \\w"
