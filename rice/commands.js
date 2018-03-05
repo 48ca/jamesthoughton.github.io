@@ -60,11 +60,16 @@ var commands = {
         var cdir = term.cdir;
         for(var i = 0; i < dest.length; i++) {
             var fn = dest[i];
-            if(fn in cdir.files) cdir = cdir.files[fn];
+            if(fn == '') cdir = root;
+            else if(fn in cdir.files) cdir = cdir.files[fn];
             else {
                 term.printString("cd: '" + tokens[1] + "' directory not found\n");
                 return 127;
             }
+        }
+        if(cdir.type != 'directory') {
+            term.printString("cd: '" + tokens[1] + "' is not a directory\n");
+            return 1;
         }
         term.cdir = cdir;
         return 0;
@@ -76,5 +81,36 @@ var commands = {
     'exit': function(term, tokens) {
         ui.removeElement(term.win);
         return 0;
+    },
+    'jsc': function(term, tokens) {
+        var cmd = "";
+        term.process = {
+            sendKeystroke: function(event) {
+                if(event.keyCode == 13) {
+                    try {
+                        term.printString("\n");
+                        var res = eval(cmd);
+                        term.printString("" + res);
+                    } catch(e) {
+                        term.printString("" + e);
+                    } finally {
+                        term.printString("\n");
+                    }
+                    cmd = "";
+                    term.printString("jsc > ");
+                } else {
+                    cmd += event.key;
+                    term.printString(event.key);
+                }
+            },
+            removeKeystroke: function() {
+                if(cmd.length > 0) {
+                    term.removeKeystroke();
+                    cmd = cmd.substr(0, cmd.length - 1);
+                }
+            }
+        };
+        term.printString("WARNING: This JavaScript interpreter uses the browser's built-in eval() function.\n");
+        term.printString("jsc > ");
     }
 };

@@ -8,16 +8,22 @@ class Terminal {
         this.cuser = users[1000];
         this.command = ""; // current command string
         this.env = {
-            PS1: "\\u \\w"
+            PS1: "\\u@jhoughton.me \\w\n$ "
         };
         var t = this;
+        this.process = null;
         win.addEventListener("keypress", function(event) {
+            if(t.process) {
+                t.process.sendKeystroke(event);
+                return;
+            }
             var key = event.key;
             var num = event.keyCode;
             // console.log("Got keycode " + num);
             // console.log("Got key: " + key);
             if(num == 127) {
-                t.removeKeystroke();
+                if(t.command.length > 0)
+                    t.removeKeystroke();
                 return;
             }
             t.addKeystroke(key, num);
@@ -26,7 +32,12 @@ class Terminal {
             // event for miscellaneous inputs
             switch(event.keyCode) {
                 case 8: // backspace
-                    t.removeKeystroke();
+                    if(t.process) {
+                        t.process.removeKeystroke();
+                        return;
+                    }
+                    if(t.command.length > 0)
+                        t.removeKeystroke();
                     break;
                 default:
                     // console.warn("Ignoring misc. keystroke (code " + event.keyCode + ")");
@@ -41,12 +52,13 @@ class Terminal {
             if(addToCommand) {
                 this.executeCommand();
                 this.command = "";
-                this.printPrompt();
+                if(!this.process) // something attached itself
+                        this.printPrompt();
             }
         } else {
             var s = document.createElement("span");
             s.classList.add("char");
-            s.innerHTML = key;
+            s.innerHTML = key == ' ' ? "&nbsp;" : key; // to allow for copy
             if(addToCommand)
                 this.command += key;
             this.el.appendChild(s);
@@ -56,7 +68,7 @@ class Terminal {
     }
     removeKeystroke() {
         var last = this.el.lastChild;
-        if(!last || last.nodeName != "SPAN" || this.command.length == 0) {
+        if(!last || last.nodeName != "SPAN") {
             console.warn("No character to remove");
             return;
         }
@@ -94,7 +106,18 @@ class Terminal {
             commands[tokens[0]](this, tokens);
         }
     }
+    parseString(str) {
+        var term = this;
+        var rep = function(match, p1, offset, string) {
+            return term.env[p1];
+        }
+        var str = str.replace(/\$(\w+)/g, rep);
+        return str;
+    }
     printPrompt() {
-        this.printString("$PS1 > ");
+        var str = this.parseString("$PS1");
+        str = str.replace(/\\u/g, this.cuser.username);
+        str = str.replace(/\\w/g, this.cdir.serialize());
+        this.printString(str);
     }
 };

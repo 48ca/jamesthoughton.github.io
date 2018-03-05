@@ -96,7 +96,7 @@ var ui = {
                 browser.createInstance(body);
                 break;
             case "terminal":
-                var t = new Terminal(body, win);
+                window.term = new Terminal(body, win);
                 break;
             case "text":
                 body.innerHTML = "testtext";

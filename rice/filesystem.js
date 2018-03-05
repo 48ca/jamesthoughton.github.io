@@ -11,8 +11,8 @@ class User {
 }
 
 var users = {
-    0: new User('root', '/root', 0),
-    1000: new User('james', '/home/james', 1000)
+    0: new User('root', ['root'], 0),
+    1000: new User('james', ['home','james'], 1000)
 }
 
 class File {
@@ -81,14 +81,14 @@ class Directory {
     }
 }
 
-var root = new Directory("/", 0, 666);
+var root = new Directory("/", 0, 644);
 root.files['..'] = root;
 [
-    new Directory("home", 0, 666),
-    new Directory("usr", 0, 666),
-    new Directory("etc", 0, 666),
-    new Directory("var", 0, 666),
-    new Directory("root", 0, 600)
+    new Directory("home", users[0], 644),
+    new Directory("usr", users[0], 644),
+    new Directory("etc", users[0], 644),
+    new Directory("var", users[0], 644),
+    new Directory("root", users[0], 600)
 ].forEach(function(dir) {
     root.addFile(dir);
 });
