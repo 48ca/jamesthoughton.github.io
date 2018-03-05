@@ -4,7 +4,7 @@ class Terminal {
     constructor(body, win) {
         this.el = body;
         this.win = win;
-        this.cdir = ['home', 'james'];
+        this.cdir = root.getDirectory(['home', 'james']);
         this.command = ""; // current command string
         this.env = {
             PS1: "\\u \\w"
@@ -37,9 +37,11 @@ class Terminal {
     addKeystroke(key, num, addToCommand = true) {
         if(num == 13) {
             this.el.innerHTML += "<br>";
-            this.executeCommand();
-            this.command = "";
-            this.printPrompt();
+            if(addToCommand) {
+                this.executeCommand();
+                this.command = "";
+                this.printPrompt();
+            }
         } else {
             var s = document.createElement("span");
             s.classList.add("char");
@@ -66,13 +68,30 @@ class Terminal {
     }
     printString(str) {
         for(var c of str) {
-            this.addKeystroke(c, 0, false);
+            switch(c) {
+                default:
+                    this.addKeystroke(c, 0, false);
+                    break;
+                case '\n':
+                    this.addKeystroke('', 13, false);
+                    break;
+                case '\t':
+                    for(var i = 0; i < 4; ++i) this.addKeystroke(' ', 0, false);
+                    break;
+            }
         }
     }
     executeCommand() {
         var c = this.command;
+        if(!c) return;
         var tokens = c.split(" ");
         console.warn("Executing '" + c + "'");
+        if(!(tokens[0] in commands)) {
+            // todo check for other executables?
+            this.printString("sh: '" + tokens[0] + "' command not found\n");
+        } else {
+            commands[tokens[0]](this, tokens);
+        }
     }
     printPrompt() {
         this.printString("$PS1 > ");

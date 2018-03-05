@@ -10,9 +10,9 @@ var ui = {
             position: ui.options.position.default,
             background: ui.options.background.color(255, 255, 255, 1),
             titlebar: true,
-            height: 360,
+            height: "360px",
             type: "text",
-            width: 480
+            width: "480px"
         };
 
         Array.from(document.getElementById("templates").children).forEach(function(el) {
@@ -86,8 +86,8 @@ var ui = {
         var body = document.createElement("div");
         body.classList.add("window-" + ops.type);
         body.setAttribute("type", ops.type);
-        body.style.width = ops.width + "px";
-        body.style.height = ops.height + "px";
+        body.style.width = ops.width;
+        body.style.height = ops.height;
         switch(ops.type) {
             default:
                 console.error("Tried to initialize a window of unknown type '" + ops.type + "'");
