@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>jhoughton.me - some helpful shell things</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h2>ffmpeg - downmix and merge audio tracks</h2>
+        <pre>
+        ffmpeg -i <b>$SRC</b> -ss 4:00 -filter_complex '[0:a:1]pan=2c|c0=c0|c1=c0[l];[0:a:0][l]amerge=inputs=2[a]' -map '0:v:0' -map '[a]' -c:v copy -c:a libvorbis -q:a 10 -ac 2 <b>$DEST</b>
+        </pre>
+        <p>
+        This is what I do for preparing 5 minute ShadowPlay clips for playback in conventional applications.<br>
+        We start with two audio tracks: first is stereo (game audio), second is stereo (mic) but the right channel is unused.</br>
+        <h3>explanation</h3>
+        Select input and set start time to 4 minutes.
+        <pre>
+        -i $SRC -ss 4:00
+        </pre>
+        <div id="filter_complex">
+            <h4>filter_complex</h4>
+            From input 0 (file at $SRC), get the second audio track (mic), and use pan to set both channels to the left channel signal. Save as 'l'.
+            <pre>
+            [0:a:1]pan=2c|c0=c0|c1=c0[l]
+            </pre>
+            Merge the first and 'l' audio tracks into 'a'.
+            <pre>
+            [0:a:0][l]merge=inputs=2[a]
+            </pre>
+        </div>
+        Select first video from first input, and select our synthesized audio track 'a'.
+        <pre>
+        -map '0:v:0' -map '[a]'
+        </pre>
+        Copy the video (do not re-encode), encode the audio with libvorbis (quality 10) with 2 channels.
+        <pre>
+        -c:v copy -c:a libvorbis -q:a 10 -ac 2
+        </pre>
+        </p>
+        <hr></hr>
+        <h2>iptables - IP forwarding/NAT</h2>
+        <pre>
+        iptables -t nat -A PREROUTING --dport <b>$LPORT</b> -j DNAT --to-destination <b>$TARGET_HOST</b>:<b>$RPORT</b>
+        iptables -t nat -A POSTROUTING -j MASQUERADE
+        </pre>
+        This will perform forwarding for requests that originate external from the host. The rule written here will forward requests sent to <pre class="inline">$LPORT</pre> to <pre class="inline">$TARGET_HOST:$RPORT</pre>.
+        For this to work, the appropriate kernel modules need to be loaded, and IP forwarding needs to be enabled.
+        <pre>
+        modprobe ip_tables
+        modprobe iptable_nat
+        sysctl net.ipv4.ip_forward=1 # for systemd
+        </pre>
+        <h3>explanation</h3>
+        In the NAT table (for packets that create connections), append a rule to the PREROUTING chain.
+        <pre>
+        -t nat -A PREROUTING
+        </pre>
+        For requests to port <pre class="inline">$LPORT</pre>, rewrite the destination field as <pre class="inline">$TARGET_HOST:$RPORT</pre>. We do this in PREROUTING so that other filters can see the intended destination.
+        <pre>
+        --dport $LPORT -j DNAT --to-destination $TARGET_HOST:$RPORT
+        </pre>
+        Rewrite the source field as the packet is being transmitted to the target host. This can be done explicitly with <pre class="inline">-j SNAT</pre> if the IP address of the forwarding host is static. For packets returning from the target host, MASQ will look up which client is requesting them and send them back.
+        <pre>
+        -t nat -A POSTROUTING -j MASQUERADE
+        </pre>
+    </body>
+</html>
