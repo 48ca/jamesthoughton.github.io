@@ -57,7 +57,7 @@
                 background-color: #222;
                 min-width: 500px;
             }
-            a {
+            a, p {
                 font-family: 'Karla', sans-serif;
                 color: #777;
                 text-decoration: none;
@@ -101,13 +101,29 @@
             }
             h2 {
                 font-family: Fajardo,sans-serif;
+                color: #ddd;
                 width: 100%;
                 margin-top: 10px;
                 margin-left: 0;
                 margin-right: 0;
                 text-align: center;
-                color: #ddd;
                 font-size: 60px;
+            }
+            p.bio, p.foot {
+                display: block;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+                margin-bottom: 40px;
+            }
+            p.bio {
+                color: #aaa;
+            }
+            p.foot {
+                margin-top: 50px;
+                color: #444;
+                font-size: 16px;
             }
         </style>
     </head>
@@ -145,15 +161,16 @@
             James was here
         </h2>
         <p class="bio">
+        I'm a computer programmer studying Tor, distributed computing, and operating systems.
         </p>
         <div class="links">
             <a href="https://github.com/jamesthoughton">github</a>
-			<a href="/uva">uva</a>
-            <!--a href="/shoegaze">shoegaze</a-->
-            <a href="/question">on life's hardest questions</a>
-            <a href="/stylish">stylish</a>
+            <a href="/stuff">things i've worked on + configs</a>
             <a href="resume.pdf">resume</a>
             <a href="shell.html">shell things</a>
         </div>
+        <p class="foot">
+        An onion a day keeps the doctor away.
+        </p>
     </body>
 </html>
