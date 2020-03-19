@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            various things i've worked on
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="heading">
+                            <h1 class="title">
+                                stuff i've worked on
+                            </h1>
+                            <span class="subheading">
+                                programs, configs, etc.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <p>
+            I occasionally write code or mess around with software in my leisure time. Here is a list of most of what's come of it. You'll find projects of all sorts: large, small; useful, useless; cool, dull.
+            I come back to these a lot to see how I did things (e.g. gdq for selenium usage, spectro for SDL, etc.).
+            <br><br>
+            But first let's look at the configs.
+            </p>
+            <div class="section-header">
+                <h2 class="">
+                    configs
+                </h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/dot-files">dot files</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" style="width: 150px" href="https://github.com/jamesthoughton/dot-files">Here. Now stop asking</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            The best rice. i3-gaps, polybar, dunst; fast, clean, comfy.
+                            <p class="warning">Plebs beware: set -o vi</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/dmenu">dmenu</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/dmenu">Here</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Colors that don't cramp my style. Thank you suckless.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/qubes-files">qubes - dom0</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/qubes-files">Here</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            For the security-inclined readers: behold! my dom0 config. i3 (obviously), some good keybindings. Much still to add.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-header">
+                <h2 class="wide">
+                    programs
+                </h2>
+                <hr/>
+            </div>
+            <div class="row work">
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/fractal-screensaver">fractal screensaver</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/bandstop">Source (cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Renders various parts of the mandelbrot set by default using implicit SIMD. Can render any sort of iterated-function plot.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/bandstop">bandstop</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/bandstop">Source (py)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Detects and removes persistent high frequencies in audio files. More producers need to look at the spectro.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/spectro">sdl spectrogram</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/spectro">Source (cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Spectrogram written in SDL. Not very portable, but cool software nonetheless.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/ttydisp">tty video player</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/ttydisp">Source (cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Video player that displays pixels in a terminal buffer. Handy when no X server is available.
+                            <p class="warning">Warning: memory leaks ahead.</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/gdq">gdq member checker</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/gdq">Source (py)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            For when I needed to get 3 tickets to GDQ. This checked the GDQ site every few seconds and notified me when spots opened up.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/termiex">terminal stock plotter</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/termiex">Source (js)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Does what it says on the tin. Decently configurable.
+                            <p class="warning">Warning: abandonware.</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/wikipedia">wikipedia game solver</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/wikipedia">Source (cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Fun problem, fun solution. Some nice thread-safe data structure ahead.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/bf">brainfuck interpreters</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/bf">Source (c/cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Two implementations! Two languages! Also created a fun text-to-bf converter.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/h2a-timer">halo 2: anniversary run timer [WIP]</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/h2a-timer">Source (rs)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Can't be bothered timing H2A runs by hand so I began to write this.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/wave-function-evolution">wave function evolution</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/wave-function-evolution">Source (cc)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Pre-good-at-C++ days: senior year of high school. But hey, it has libquadmath support (if you have a year to run it).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/question">i am confused</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/question">Source (web)</a>
+                        <a class="btn btn-sm btn-inverse" href="https://jhoughton.me/question">View</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Was burnt out one day. Who can't relate?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/alexa">alexa skill: ports</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/alexa">Source (js)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            I wanted a cool shirt so I decided to make a small Alexa skill. It never got accepted.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/facebook-message-dump-parser">facebook message dump parser</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/facebook-message-dump-parser">Source (py)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Want to see what your earliest messages were on Facebook? Now you can!
+                            <p class="warning">Warning: cringe.</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/shoegaze">shoegaze</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/shoegaze">Source (web)</a>
+                        <a class="btn btn-sm btn-inverse" href="https://jhoughton.me/shoegaze">View</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Nothing like some rain and soft music to calm the nerves.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="//github.com/jamesthoughton/lights">lights</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="https://github.com/jamesthoughton/lights">Source (c)</a>
+                        <a class="btn btn-sm btn-inverse" href="lights.png">Image</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Found a screensaver on xscreensaver once. Thought it was cool, so I decided to see what I could do in SDL.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-header">
+                <h2 class="">
+                    for uni
+                </h2>
+                <hr/>
+            </div>
+            <p>I can't share code publically for most assignments, but they were fun to work on! Feel free to ask me about them. I have omitted some of the projects as there are simply too many to list.
+            The most fun assignments were part of Operating Systems, so I think I'll start with them.
+            </p>
+            <div class="row work">
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">FTP server</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="ftp-server.tar.xz">Source (c)</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Given that this is no longer assigned in the OS course at UVA, I have no problem releasing my code. I really like my work here. It implements all basic functionality including CDing. Check it out!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">xv6 paging</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            As a part of Operating Systems, I implemented demand paging and copy-on-write page allocation in <a style="font-weight:bold" href="https://github.com/mit-pdos/xv6">xv6</a>, the pedagogical operating system used at MIT.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">FAT32 reading</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            As a part of Operating Systems, I implemented a FAT32 filesystem reader. With <span style="font-family:monospace;">mmap()</span> it was quite simple but interesting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">renderers of all kinds</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            For Computer Graphics, I created basic 2- and 3-D rasterizers, a raytracing engine, a small webgl project, and more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">MeggyJava compiler</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            For Compilers, I created a feature-rich LALR(1) compiler for MeggyJava (a subset of Java) targetting AVR assembly using JLex and JCup.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">Y86 processor</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            As a part of Computer Architecture, I created a processor in hardware description language called HCL that operates on the Y86 ISA.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">SIMD image transformation</a></h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            As a part of Computer Architecture in a somewhat collaborative effort, I created programs that smoothed and rotated images using SIMD to achieve significant perforance improvements (up to ~10x).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-3 col-sm-6">
+                    <h3><a href="#">Essay: OS preparation at UVA</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" style="width: 120px" href="cs2910/curriculum-redesign.ms">Source (roff/ms)</a>
+                        <a class="btn btn-sm btn-inverse disabled" href="cs2910/curriculum-redesign.pdf">PDF</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            At the end of my TA practicum course in my fourth semester, I was asked how I would change the Computer Science curriculum at UVA. I was TAing OS at the time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-header">
+                <h2 class="">
+                    notes
+                </h2>
+                <hr/>
+            </div>
+            <p>
+            When I was a first-year, I had a lot of free time. I decided to write some notes for Linear Algebra and Differential Equations. Although both are incomplete, my ODE notes are very detailed.
+            </p>
+            <div class="row work">
+                <div class="content col-md-6 col-sm-6">
+                    <h3><a href="apma2130">Ordinary Differential Equations</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="apma2130.tar.xz">Source (tex)</a>
+                        <a class="btn btn-sm btn-inverse" href="apma2130.pdf">PDF</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Goes until systems of differential equations. These notes practically substitute for a proper course on differential equations, I guarantee it. Why am I so confident? Because Prof. Jack Dorning was a fantastic lecturer, and these notes are effectively a transcription of his lectures.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-md-6 col-sm-6">
+                    <h3><a href="apma3080">Linear Algebra</a></h3>
+                    <div class="buttons">
+                        <a class="btn btn-sm btn-inverse" href="apma3080.tar.xz">Source (tex)</a>
+                        <a class="btn btn-sm btn-inverse" href="apma3080.pdf">PDF</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            Very incomplete, but the visuals may be useful. These were loosely based on Dr. Jonathan Osborne's lectures while having my memory refreshed by Prof. Meiqin Li at UVA.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="container">
+            <div class="row footer">
+                <div class="col-md-4"> <!-- Left side of footer -->
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4"> <!-- Right side of footer -->
+                    <p class="center">
+                    Questions? Email me at <a href="mailto:jhoughton@virginia.edu">jhoughton@virginia.edu</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
