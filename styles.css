@@ -1,0 +1,22 @@
+html, body {
+    margin: 5px;
+    background-color: white;
+}
+
+pre {
+    whitespace: prewrap;
+}
+
+#filter_complex {
+    margin-left: 20px;
+    background-color: rgba(0,0,0,.05);
+    padding-top: 5px;
+    padding-left: 5px;
+}
+#filter_complex h4 {
+    margin-top: 0;
+}
+
+.inline {
+    display: inline;
+}
