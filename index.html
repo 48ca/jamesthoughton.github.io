@@ -7,8 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=.7">
         <meta charset="UTF-8">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="tor.js"></script>
         <script>
             document.onready = function() {
+                checktor();
                 var r = 7.0;
                 var svg = document.querySelector("svg");
                 var $svg = $(svg);
@@ -82,7 +84,7 @@
                 display: block;
                 margin: 0 auto;
                 stroke-width: 4px;
-                fill: #eee; 
+                fill: #eee;
                 stroke: #777;
                 shape-rendering: geometricPrecision;
             }
@@ -123,6 +125,9 @@
             p.foot {
                 margin-top: 50px;
                 color: #444;
+                font-size: 16px;
+            }
+            p.foot a {
                 font-size: 16px;
             }
 	    p.fingerprint {
@@ -176,8 +181,5 @@
             <a href="jhoughton-pub.asc">pgp</a>
 	    <p class="fingerprint">FEC1 B783 BE51 F6E1 DD1B  86C5 A847 5092 E7C3 76AA</p>
         </div>
-        <p class="foot">
-        An onion a day keeps the doctor away.
-        </p>
     </body>
 </html>
