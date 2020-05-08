@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<h1>git tutorial</h1>
+<pre>
+# This is not a replacement for the git book (https://git-scm.com/book),
+# but it should be much more succinct.
+
+# chapter 0: terms, overview of internals
+commit: a final change to the code
+they have at least an author, date, and message.
+the files changed, date, and author are all hashed to determine the tree-ish that identifies it.
+the tree-ish is a SHA-1 hash
+
+tree-ish (hash-ish, SHA)
+e.g. : HEAD, origin/master, master, HEAD~5, HEAD^^, abc123def^^^, myremote/somebranch
+
+branches: convention: default branch is "master". it is not special
+
+
+# chapter 1: intro to git workflow
+tracked, staged, committed
+# staging will save files as well, so if you make additional changes, they won't be committed unless you first stage them again.
+
+clone, pull (fetch, merge)
+add, commit, push
+init -- do not init inside of a git repository unless you know what you're doing
+
+use SSH when interacting with github
+
+remotes are just directories. most of the time they are accessed over http or ssh, but they can be on a local disk too.
+
+checkout
+
+# chapter 2: real git workflow
+branch, rebase, fetch, reset, tracking branches
+blame, log (logg)
+push --force
+
+stash
+
+diff
+
+rm --cached
+
+# chapter 3: other topics
+.gitignore, .gitmodules
+
+gitignores are useful for ignoring temporary files made my editors (*.swp for Vim), compiled artificats like object files or executables, or filesystem objects (e.g. .DS_STORE for OSX).
+They are useful for ignoring secrets files that contain private information.
+
+interactive rebase (rebase -i)
+
+bisect
+
+signing, secondary messages
+
+git revert
+
+EDITOR
+
+PS1
+
+tagging
+
+# examples:
+revert file to how it was in an older commit:
+git checkout OLD_COMMIT file
+git add file
+git commit
+
+
+# bonus: commands I use 
+* git commit --amend -C HEAD # amend and take message of amended commit
+* git checkout -p (--patch)  # patch checkout (choose hunks to use/discard)
+</pre>
+</body>
+</html>
