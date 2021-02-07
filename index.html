@@ -20,11 +20,17 @@
                 var e2cx = e2.getAttribute('cx');
                 var e1cy = e1.getAttribute('cy');
                 var e2cy = e2.getAttribute('cy');
+                var throttle = false;
                 var to;
                 document.onmousemove = function(e) {
                     if(to !== undefined) {
                         clearTimeout(to);
+                        to = undefined;
                     }
+                    if(throttle) {
+                        return;
+                    }
+                    throttle = true;
                     var o = $svg.offset();
                     var offx1 = e.pageX - e1cx - o.left;
                     var offx2 = e.pageX - e2cx - o.left;
@@ -38,6 +44,9 @@
                     e1.setAttribute('cy', r*offy1/mag1 - -e1cy);
                     e2.setAttribute('cx', r*offx2/mag2 - -e2cx);
                     e2.setAttribute('cy', r*offy2/mag2 - -e2cy);
+                    requestAnimationFrame(function() {
+                        throttle = false;
+                    });
                 };
                 document.onmouseout = function(){
                     to = setTimeout(function(){
