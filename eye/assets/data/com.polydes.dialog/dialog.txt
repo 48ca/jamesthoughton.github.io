@@ -1,0 +1,166 @@
+#-Info-
+
+~xfeff//I should probably use the same format for all the others here. > names a dialog if it's the first character, # begins a comment.//
+//comments are inside two pairs of double-slashes//
+//use a hash (#) to begin a number or text label//
+//using special symbols in dialog://
+// \< = < //
+// \> = > //
+// \$ = $ //
+// \\ = \ //
+
+#Start
+
+<setattr [game adam true]>
+<setattr [game adamclark false]>
+<setattr [game adamangry false]>
+Press V to advance. <but>Press C to instantly draw all text. <but>Press X to go ZOOM. <but>Press Z to go fast.<but><dg "Main Choice">
+
+#Welcome Back
+
+<setattr [game adam true]>
+<setattr [game adamclark false]>
+<setattr [game adamangry false]>
+Welcome back! <but><dg "Main Choice">
+
+#Bye
+
+Come back again!<but><end>
+
+#Text Flow
+
+Hello, <wait 0.4>this is an example of dynamic text flow. <but>Please refrain from using the C, X, and Z keys if you'd like to fully enjoy everything this particular demonstration has to offer. <but><clear>As you can see, <wait 0.2>we're pausing the text after every comma<wait 0.2>.<wait 0.4>.<wait 0.4>. <wait 0.6>and during ellipses.<but><clear>
+This is accomplished by using the {cb}\<wait #\>{cd} command. <but>You may have also noticed us pausing and awaiting a button input. <but>This is accomplished by using the {cb}\<but\>{cd} command. <but><clear>
+<typespeed 0.02>We can also change the character drawing speed. <wait 0.1>We're drawing faster-<wait 0.4> exactly 0.02 seconds per character. <but><typespeed 0.15>Now we're drawing slowly-<wait 0.4> exactly 0.15 seconds per character. <but><clear>
+<typespeed 0.05>We accomplish this by using the {cb}\<typespeed #\>{cd} command.<but><dg "Main Choice">
+
+#Name and Face
+
+<showname "Names and Faces Master">Whoa,<wait 0.4> I have a name! <wait 0.5>And you can see it!<but><clear>
+This is accomplished by using the {cb}\<showname NAME\>{cd} command.<but><clear>
+<face 1>Now I have a face! <wait 0.5>This day just keeps on getting better and better!<but><clear>
+This is accomplished by using the {cb}\<face IMAGE\>{cd} command.<but><clear>
+<face 2><showname "Police Officer">Ohh go away mister Names and Faces Master, <wait 0.4>it's POLICE OFFICER time now!<but><clear>
+Hellloooo! <wait 0.3>Welcome to the Police Officer show!<but><clear>
+<face 1><showname "Names and Faces Master">Enough!<but><clear>
+<face 2><showname "Police Officer">I am going to ARREST you,<wait 0.1> mister! <but>O<wait 0.1><typespeed 0.08>kaaaaaaaaaaay!<typespeed 0.05><but><hidename><dg "Main Choice">
+
+#Visual Text
+
+<shake>This is shaking text.</shake> <but>Shaking text is accomplished by using the {cb}\<shake\>{cd} command.<but><br>
+<sine>This is sine-wave text.</sine> <but>Sine-wave text can be accomplished by using the {cb}\<sine\>{cd} command.<but><br>
+<grow>This is growing (actually, shrinking) text.</grow> <but>Growing text can be accomplished by using the {cb}\<grow\>{cd} command.<but><br>
+<revolve>This is revolving text.</revolve> <but>Revolving text can be accomplished by using the {cb}\<revolve\>{cd} command.<but><br>
+<color #F31D1D>This is colored text.<color -1> <but>Colored text can be accomplished by using the {cb}\<color HEX_COLOR\>{cd} command.<but><br>
+<font "Big Font">This text uses a different font.<but><font "Textbox Font"><br>
+You can change the font using the {cb}\<font FONT\>{cd} command.<but>
+<clear>
+<typespeed 0.08><shake>I- <wait 0.4>I- <wait 0.6><typespeed 0.05><font "Textbox Small">I'm so scared<font "Textbox Font"><typespeed 0.08><wait 0.2>.<wait 0.4>.<wait 0.4>. <wait 0.5>I have a <wait 0.09>f-<wait 0.12> feeling that a <wait 0.4>s-<wait 0.08> s-<wait 0.5><typespeed 0.05>spooky ghost is present.<but><clear>
+<revolve><sine><grow><typespeed 0.1><font "Big Font"><color #FF5A4B>Oh my gosh!<color -1><font "Textbox Font"></grow></sine></revolve></shake><but><dg "Main Choice">
+
+#Sound
+
+<stopchan 29><playchan Piano 29><sine>{gm2}</sine><but><dg "Main Choice">
+
+#Bitmap
+
+<font "Handdrawn Font">I can use a custom bitmap font. This can also be used to support other languages, like Japanese.<bc>
+<font Wagahai><typespeed 0.02><typesound none>
+~x543e~x8f29~x308f~x304c~x306f~x3044~x306f~x732b~x3067~x3042~x308b~x3002~x540d~x524d~x306f~x307e~x3060~x7121~x3044~x3002<bc>
+~x3069~x3053~x3067~x751f~x308c~x305f~x304b~x3068~x3093~x3068~x898b~x5f53~x3051~x3093~x3068~x3046~x304c~x3064~x304b~x306c~x3002~x4f55~x3067~x3082~x8584~x6697~x3044~x3058~x3081~x3058~x3081~x3057~x305f~x6240~x3067~x30cb~x30e3~x30fc~x30cb~x30e3~x30fc~x6ce3~x3044~x3066~x3044~x305f~x4e8b~x3060~x3051~x306f~x8a18~x61b6~x3057~x3066~x3044~x308b~x3002~x543e~x8f29~x306f~x3053~x3053~x3067~x59cb~x3081~x3066~x4eba~x9593~x3068~x3044~x3046~x3082~x306e~x3092~x898b~x305f~x3002~x3057~x304b~x3082~x3042~x3068~x3067~x805e~x304f~x3068~x305d~x308c~x306f~x66f8~x751f~x3068~x3044~x3046~x4eba~x9593~x4e2d~x3067~x4e00~x756a~x7370~x60aa~x3069~x3046~x3042~x304f~x306a~x7a2e~x65cf~x3067~x3042~x3063~x305f~x305d~x3046~x3060~x3002~x3053~x306e~x66f8~x751f~x3068~x3044~x3046~x306e~x306f~x6642~x3005~x6211~x3005~x3092~x6355~x3064~x304b~x307e~x3048~x3066~x716e~x306b~x3066~x98df~x3046~x3068~x3044~x3046~x8a71~x3067~x3042~x308b~x3002~x3057~x304b~x3057~x305d~x306e~x5f53~x6642~x306f~x4f55~x3068~x3044~x3046~x8003~x3082~x306a~x304b~x3063~x305f~x304b~x3089~x5225~x6bb5~x6050~x3057~x3044~x3068~x3082~x601d~x308f~x306a~x304b~x3063~x305f~x3002<bc>
+~x305f~x3060~x5f7c~x306e~x638c~x3066~x306e~x3072~x3089~x306b~x8f09~x305b~x3089~x308c~x3066~x30b9~x30fc~x3068~x6301~x3061~x4e0a~x3052~x3089~x308c~x305f~x6642~x4f55~x3060~x304b~x30d5~x30ef~x30d5~x30ef~x3057~x305f~x611f~x3058~x304c~x3042~x3063~x305f~x3070~x304b~x308a~x3067~x3042~x308b~x3002~x638c~x306e~x4e0a~x3067~x5c11~x3057~x843d~x3061~x3064~x3044~x3066~x66f8~x751f~x306e~x9854~x3092~x898b~x305f~x306e~x304c~x3044~x308f~x3086~x308b~x4eba~x9593~x3068~x3044~x3046~x3082~x306e~x306e~x898b~x59cb~x307f~x306f~x3058~x3081~x3067~x3042~x308d~x3046~x3002~x3053~x306e~x6642~x5999~x306a~x3082~x306e~x3060~x3068~x601d~x3063~x305f~x611f~x3058~x304c~x4eca~x3067~x3082~x6b8b~x3063~x3066~x3044~x308b~x3002~x7b2c~x4e00~x6bdb~x3092~x3082~x3063~x3066~x88c5~x98fe~x3055~x308c~x3079~x304d~x306f~x305a~x306e~x9854~x304c~x3064~x308b~x3064~x308b~x3057~x3066~x307e~x308b~x3067~x85ac~x7f36~x3084~x304b~x3093~x3060~x3002~x305d~x306e~x5f8c~x3054~x732b~x306b~x3082~x3060~x3044~x3076~x9022~x3042~x3063~x305f~x304c~x3053~x3093~x306a~x7247~x8f2a~x304b~x305f~x308f~x306b~x306f~x4e00~x5ea6~x3082~x51fa~x4f1a~x3067~x304f~x308f~x3057~x305f~x4e8b~x304c~x306a~x3044~x3002<bc>
+~x306e~x307f~x306a~x3089~x305a~x9854~x306e~x771f~x4e2d~x304c~x3042~x307e~x308a~x306b~x7a81~x8d77~x3057~x3066~x3044~x308b~x3002~x305d~x3046~x3057~x3066~x305d~x306e~x7a74~x306e~x4e2d~x304b~x3089~x6642~x3005~x3077~x3046~x3077~x3046~x3068~x7159~x3051~x3080~x308a~x3092~x5439~x304f~x3002~x3069~x3046~x3082~x54bd~x3080~x305b~x307d~x304f~x3066~x5b9f~x306b~x5f31~x3063~x305f~x3002~x3053~x308c~x304c~x4eba~x9593~x306e~x98f2~x3080~x7159~x8349~x305f~x3070~x3053~x3068~x3044~x3046~x3082~x306e~x3067~x3042~x308b~x4e8b~x306f~x3088~x3046~x3084~x304f~x3053~x306e~x9803~x77e5~x3063~x305f~x3002<but>
+<typesound "Type Text">
+<dg "Main Choice">
+OKAY LETS TRY THIS AGAIN
+OKAY??
+
+#Main Choice
+
+What would you like to see?
+<option [
+	["Text Flow" "Text Flow"]
+	["Namebox and Face" "Name and Face"]
+	["Visual text stuff" "Visual Text"]
+	["Sound" "Sound"]
+	["Adam" "Adam" <getattr [game adam]>]
+	["Adam (Clark)" "Adam Clark" <getattr [game adamclark]>]
+	["Adam (Angry)" "Adam Angry" <getattr [game adamangry]>]
+	["Bitmap Fonts" "Bitmap"]
+	["Bye!" "Bye"]
+	["Switch" "Switching Scene"]
+]>
+
+#Adam
+
+<showname "Adam">
+Time traveling warrior. I am <color #3D9FEB>Adam<color -1>.<wait 0.4><br>
+And you are?<but>
+<option [
+	["Klark, destroyer of worlds." "Adam Clark"]
+	["None of your business." "Adam Angry"]
+]>
+
+#Adam Clark
+
+<setattr [game adam false]>
+<setattr [game adamclark true]>
+It's a pleasure to meet you, Klark.<but><hidename><dg "Main Choice">
+
+#Adam Angry
+
+<setattr [game adam false]>
+<setattr [game adamangry true]>
+<shake><sine>Waaaaaaaaaah!</sine></shake><but><br>
+You have disrespected me! <wait 0.4>Leave this area at once!<but><hidename><dg "Main Choice">
+
+#Switching Scene
+
+Some dialog.<but>+Another Scene+
+
+>>eye dialog
+#sos_1
+
+<face mystery><showname "???"><grow>Help!</grow><but><end>
+
+#sos_2
+
+<face mystery><showname "???"><grow>Help me!</grow><but><end>
+
+#sos_3
+
+<face mystery><showname "???"><shake>Is somebody up there? </shake><but>Uhh...<but><br>If you're a monster then I'm not a delicious cat! <but><br>But if you're not...<but>THEN WHAT TOOK YOU SO LONG?!?!<but><end>
+
+#dk_1
+
+<face mystery><showname "???">Oh! <wait 0.4>It's you!<but><br>
+<sine>Come closer!</sine> <wait 0.4>I know the dark can be a bit scary,<wait 0.2> but once you see it from my eyes, it's not so bad!<but><end>
+
+#dk_2
+
+<face mystery><showname "???">Herc was late to the council meeting and I thought I'd find him here.<but><br>
+But then those vicious crows started attacking me and I fell into this hole...<wait 0.4><but><br>
+ahem<but><br>
+<face cat><showname "Cat">I'm <sine>so</sine> glad you came!<but><br>
+The humidity in here just curls my fur. <wait 0.4>What are you waiting for? <wait 0.4>Let's go! <wait 0.4>Press the down button next to me and hop on the kitty carriage, <wait 0.4>complete with night-vision headlights!<but><end>
+
+#dk_3
+
+<face cat><showname "Cat">We made it! <wait 0.4>Herc should be just through here...<wait 0.6>just <wait 0.2><grow>WHAT</grow> is that  <grow>DUNCE</grow> thinking?<wait 0.4><br>
+He's going to make us both late! <wait 0.4>Ahh...<wait 0.4>at least I found you. <wait 0.4>Just don't forget to bail me out later.<but><br>
+I can see the headlines already. <wait 0.4><color #F3CC1D>Bestest kitty in all the animal clans discovers lost nature spirit and returns as hero to her people.<color -1> <wait 0.4>Ooohhh, do you think this means complimentary catnip for life?<but><end>
+
+#final
+
+<face cow><showname "???">I'm here to check out some of your new stuff! <wait 0.4> Whatcha got lying around, <wait 0.4>anything with my name on it? <wait 0.4><but><br><clear>
+<face priest><showname "???"><shake>I- <wait 0.4>I- <wait 0.6>I do-</shake><but><br><clear>
+<face cow><showname "???"><grow>C'mon,</grow> speak up! <wait 0.4>No need to be scared, Momo! <wait 0.6>We're old friends!<but><br><clear>
+<face priest><showname "Momo"><shake>W-w-w-well <wait 0.4>Great Herc, <wait 0.4>I'm still contemplating the worth of the new haul to the Heap and i-<wait 0.2>i-<wait 0.2>it will take some t-<wait 0.2>t-<wait 0.2>time for me to get these artifacts ready for circulation</shake><but><br><clear>
+<face cow><showname "Herc">Aww c'mon Mo,<wait 0.4> Just let me take a peek.<wait 0.4> I really want to impress the other cattle as their new leader,<wait 0.4> and some new duds would do the trick.<wait 0.4><but><br><clear>
+<face cat><showname "Cat"><grow>Herc!</grow><wait 0.4> C'mon, stop pestering that poor cat.<wait 0.4><but><br><clear>
+<face cow><showname "Herc">Furball!<wait 0.4> WOAH.<wait 0.4> Is that - ?<wait 0.4><but><br><clear>
+<face cat><showname "Cat">The newest nature spirit? <sine>Yuuup.</sine><wait 0.4> And <color #F3CC1D>I<color -1> found it!<wait 0.4> We've got a meeting to head to!<wait 0.4> This is no time to be on a shopping spree.<wait 0.4> C'mon, you big dork.<wait 0.4><but><br><clear>
+<face cow><showname "Herc">...<wait 0.4>I'll be back, Mo!<wait 0.4><but><br><clear>
+<face priest><showname "Momo"><shake>Please no.<but><br><end>
+
+<<

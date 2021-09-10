@@ -1,0 +1,8 @@
+struct_id=15
+struct_type=dialog.ds.ext.DialogBase
+msgWindow=7
+msgFont=37
+msgTypeSpeed=0.05
+controlAttribute=dialog_open
+lineSpacing=4
+charSpacing=0

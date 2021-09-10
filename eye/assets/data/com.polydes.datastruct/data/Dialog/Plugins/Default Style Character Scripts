@@ -1,0 +1,9 @@
+struct_id=18
+struct_type=dialog.ds.ext.CharacterScripts
+nameboxWindow=8
+nameboxFont=37
+faceImagePrefix=Face 
+faceRelation=Message Window
+faceOrigin=[[0],[50%]]
+facePos=[[18],[50%]]
+faceMsgOffset=[0.0,140.0,0.0,140.0]

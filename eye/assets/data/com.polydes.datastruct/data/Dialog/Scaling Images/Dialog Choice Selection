@@ -1,0 +1,7 @@
+struct_id=3
+struct_type=dialog.ds.ScalingImageTemplate
+image=Dialog Choice Selection.png
+origin=[[0],[0]]
+type=Stretch Image
+part=Inside Border
+border=[5.0,5.0,5.0,5.0]
